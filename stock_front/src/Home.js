@@ -30,13 +30,21 @@ class Home extends React.Component {
           change_page={this.props.change_page}
           user={this.props.user}
         />
-        <p>Home</p>
-        <input
-          type="text"
-          placeholder="Stock or Congressmen"
-          onChange={this.updateSearchVal}
-        ></input>
-        <button onClick={this.initSearch}>Search</button>
+        <div className="HomeBody">
+          <div>
+            <input
+              className="HomeInput"
+              type="text"
+              placeholder="Stock or Congressmen"
+              onChange={this.updateSearchVal}
+            ></input>
+          </div>
+          <div>
+            <button className="HomeSearchButton" onClick={this.initSearch}>
+              Search
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

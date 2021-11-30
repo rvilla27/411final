@@ -12,31 +12,45 @@ function Login(props) {
   };
 
   return (
-    <div>
-      <p>Login</p>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-      ></input>
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      ></input>
-      <button name={"Home"} onClick={checkLogin}>
-        Login
-      </button>
-      <button name={"CreateAccount"} onClick={props.change_page}>
-        Create New Account
-      </button>
-      <button name={"Home"} onClick={props.change_page}>
-        Back
-      </button>
+    <div className="LoginPage">
+      <div>
+        <p className="LoginText">Login</p>
+        <input
+          className="LoginInput"
+          type="text"
+          placeholder="Username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        ></input>
+        <input
+          className="LoginInput"
+          type="password"
+          placeholder="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        ></input>
+      </div>
+      <div>
+        <button className="LoginButton" name={"Home"} onClick={checkLogin}>
+          Login
+        </button>
+        <button
+          className="LoginButton"
+          name={"CreateAccount"}
+          onClick={props.change_page}
+        >
+          Create New Account
+        </button>
+        <button
+          className="LoginButton"
+          name={"Home"}
+          onClick={props.change_page}
+        >
+          Back
+        </button>
+      </div>
     </div>
   );
 }
