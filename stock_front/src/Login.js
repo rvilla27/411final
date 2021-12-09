@@ -1,15 +1,30 @@
 import React, { useState } from "react";
+import Axios from 'axios';
 
 function Login(props) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [loginStat, setLoginStat] = useState("");
 
   const checkLogin = () => {
-    // NEED QUERY TO CHECK USERNAME and PASSWORD
-    if (username.length > 0) {
-      props.userLogin(username);
-    }
+    Axios.post('http://localhost:3002/api/login', {
+        username: username,
+        password: password
+    }).then((response) => {          
+        if (response.data == "0") {
+          props.userLogin(username);
+        } else {
+          setLoginStat(response.data)
+        }
+    })
   };
+
+  let error_message = "";
+  if (loginStat == "1") {
+    error_message = "Username not found";
+  } else if (loginStat == "2") {
+    error_message = "Incorrect Password";
+  }
 
   return (
     <div className="LoginPage">
@@ -51,6 +66,7 @@ function Login(props) {
           Back
         </button>
       </div>
+      <p className="LoginErrorText">{error_message}</p>
     </div>
   );
 }
